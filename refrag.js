@@ -11,7 +11,12 @@
 
   function xfetch(method, url, body) {
     return fetch(url, { method, body })
-      .then((res) => res.text())
+      .then((res) => {
+        if (res.redirected) {
+          window.location.href = res.url;
+        }
+        return res.text();
+      })
       .then(update);
   }
 

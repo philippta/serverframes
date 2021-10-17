@@ -1,6 +1,6 @@
 {
   "name": "refrag",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "refresh fragments",
   "main": "refrag.min.js",
   "scripts": {

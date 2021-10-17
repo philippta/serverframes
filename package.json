@@ -1,0 +1,14 @@
+{
+  "name": "refrag",
+  "version": "0.0.1",
+  "description": "refresh fragments",
+  "main": "refrag.js",
+  "scripts": {
+    "build": "terser -c -m -o refrag.min.js -- refrag.js"
+  },
+  "author": "Philipp Tanlak",
+  "license": "MIT",
+  "devDependencies": {
+    "terser": "^5.9.0"
+  }
+}

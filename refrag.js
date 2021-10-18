@@ -1,10 +1,8 @@
 (function () {
   function update(html) {
     const doc = new DOMParser().parseFromString(html, "text/html");
-    doc.querySelectorAll("[x-fragment]").forEach((fragment) => {
-      const name = fragment.getAttribute("x-fragment");
-      document.querySelector(`[x-fragment="${name}"]`).outerHTML =
-        fragment.outerHTML;
+    Array.from(doc.body.children).map((fragment) => {
+      document.getElementById(fragment.id).outerHTML = fragment.outerHTML;
     });
     attach();
   }
@@ -36,15 +34,15 @@
         el.addEventListener("submit", (e) => {
           e.preventDefault();
           xfetch(
-            el.getAttribute("method"),
-            el.getAttribute("action"),
+            el.getAttribute("method") || "GET",
+            el.getAttribute("action") || window.location.href,
             new FormData(el)
           );
         });
       } else if (el instanceof HTMLAnchorElement) {
         el.addEventListener("click", (e) => {
           e.preventDefault();
-          xfetch(el.getAttribute("x-method") || "GET", el.getAttribute("href"));
+          xfetch("GET", el.getAttribute("href"));
         });
       } else {
         console.warn("x-intercept can only be set on: form, a");

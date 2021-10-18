@@ -1,10 +1,9 @@
 {
-  "name": "refrag",
-  "version": "0.0.4",
-  "description": "refresh fragments",
-  "main": "refrag.min.js",
+  "name": "serverframes",
+  "version": "0.0.1",
+  "main": "serverframes.min.js",
   "scripts": {
-    "build": "terser -c -m -o refrag.min.js -- refrag.js"
+    "build": "terser -c -m -o serverframes.min.js -- serverframes.js"
   },
   "author": "Philipp Tanlak",
   "license": "MIT",

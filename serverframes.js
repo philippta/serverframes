@@ -8,7 +8,7 @@
   }
 
   function xfetch(method, url, body) {
-    return fetch(url, { method, body })
+    return fetch(url, { method, body, headers: { "X-ServerFrames": "true" } })
       .then((res) => {
         if (res.redirected) {
           window.location.href = res.url;
@@ -20,16 +20,16 @@
 
   function attachTo(selector, callback) {
     document.querySelectorAll(selector).forEach((el) => {
-      if (el.hasAttribute("x-attached")) {
+      if (el.hasAttribute("sf-attached")) {
         return;
       }
-      el.setAttribute("x-attached", "");
+      el.setAttribute("sf-attached", "");
       callback(el);
     });
   }
 
   function attach() {
-    attachTo("[x-intercept]", (el) => {
+    attachTo("[sf-intercept]", (el) => {
       if (el instanceof HTMLFormElement) {
         el.addEventListener("submit", (e) => {
           e.preventDefault();
@@ -44,8 +44,6 @@
           e.preventDefault();
           xfetch("GET", el.getAttribute("href"));
         });
-      } else {
-        console.warn("x-intercept can only be set on: form, a");
       }
     });
   }

@@ -33,10 +33,14 @@
       if (el instanceof HTMLFormElement) {
         el.addEventListener("submit", (e) => {
           e.preventDefault();
+          data = new FormData(el);
+          if (e.submitter && e.submitter.hasAttribute("name")) {
+            data.append(e.submitter.getAttribute("name"), e.submitter.value);
+          }
           xfetch(
             el.getAttribute("method") || "GET",
             el.getAttribute("action") || window.location.href,
-            new FormData(el)
+            data
           );
         });
       } else if (el instanceof HTMLAnchorElement) {

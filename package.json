@@ -1,6 +1,6 @@
 {
   "name": "serverframes",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "serverframes.min.js",
   "scripts": {
     "build": "terser -c -m -o serverframes.min.js -- serverframes.js"

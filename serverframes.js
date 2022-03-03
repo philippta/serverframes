@@ -8,7 +8,7 @@
   }
 
   function xfetch(method, url, body) {
-    return fetch(url, { method, body, headers: { "X-ServerFrames": "true" } })
+    return fetch(url, { method, body, headers: { "X-Serverframes": "true" } })
       .then((res) => {
         if (res.redirected) {
           window.location.href = res.url;
@@ -19,17 +19,17 @@
   }
 
   function attachTo(selector, callback) {
+    const attr = "serverframes-attached";
     document.querySelectorAll(selector).forEach((el) => {
-      if (el.hasAttribute("sf-attached")) {
-        return;
+      if (!el.hasAttribute(attr)) {
+        el.setAttribute(attr, "");
+        callback(el);
       }
-      el.setAttribute("sf-attached", "");
-      callback(el);
     });
   }
 
   function attach() {
-    attachTo("[sf-intercept]", (el) => {
+    attachTo("[serverframes]", (el) => {
       if (el instanceof HTMLFormElement) {
         el.addEventListener("submit", (e) => {
           e.preventDefault();

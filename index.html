@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serverframes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        .font-mono {
+            font-family: 'Fira Mono', monospace !important;
+            font-weight: 500 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white pt-24 px-4">
+    <div class="text-6xl font-bold text-center mb-4">
+        Serverframes
+    </div>
+    <div class="text-lg mb-16 text-center">
+        Lightweight reactivity, just 0.6 KB of JavaScript.
+    </div>
+    <div class="mx-auto max-w-2xl rounded-xl border border-2 border-slate-400 p-8 font-mono mb-12">
+        <span class="text-slate-600">&lt;!-- Frontend --&gt;</span><br />
+        &lt;script src="//unpkg.com/serverframes" defer&gt;&lt;/script&gt;<br />
+        <br />
+        &lt;div id="message"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;Loading...<br />
+        &lt;/div&gt;<br />
+        <br />
+        &lt;a href="/refresh" serverframes&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;Refresh<br />
+        &lt;/a&gt;<br />
+    </div>
+    <div class="mx-auto max-w-2xl rounded-xl border border-2 border-slate-400 p-8 font-mono mb-12">
+        <span class="text-slate-600">// Backend</span><br />
+        app.get("/refresh", (req, res) => {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;res.send(`<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="message"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hey! 👋<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;`)<br />
+        })<br />
+    </div>
+</body>
+
+</html>
